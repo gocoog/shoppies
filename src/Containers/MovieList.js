@@ -8,7 +8,7 @@ const MovieList = () => {
 
     const fetchMovies = (search) => {
 
-        fetch(`http://www.omdbapi.com/?s=${search}&type=movie&apikey=${process.env.REACT_APP_MY_KEY}`)
+        fetch(`https://www.omdbapi.com/?s=${search}&type=movie&apikey=${process.env.REACT_APP_MY_KEY}`)
         .then(res => res.json())
         .then(json => {
             if(json.Response === 'False'){
