@@ -1,7 +1,9 @@
 import './App.css';
-import MovieList from './Components/MovieList'
+import MovieList from './Containers/MovieList'
 
 function App() {
+
+  
   return (
     <div>
       <MovieList />
