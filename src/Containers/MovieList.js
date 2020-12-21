@@ -34,7 +34,13 @@ const MovieList = () => {
                     onRequestSearch={() => {fetchMovies(search)}}
                 />
             </div>
-            {movies !== null ? movies.map(movie => <MovieCard movie={movie} />) : <h1>Type in the search bar and nominate your favorite movies!</h1>}
+            <div className="flex-container">
+                {movies !== null ? movies.map(movie =>
+                    <MovieCard movie={movie} />) 
+                    : 
+                    <h1>Type in the search bar and nominate your favorite movies!</h1>
+                }
+            </div>
         </div>
     )
 }
