@@ -6,6 +6,7 @@ function App() {
   
   return (
     <div>
+      <h1 className="title">The Shoppies</h1>
       <MovieList />
     </div>
   );

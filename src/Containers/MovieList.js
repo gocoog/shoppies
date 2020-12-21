@@ -4,9 +4,10 @@ import SearchBar from "material-ui-search-bar";
 
 const MovieList = () => {
     const [movies, setMovies] = useState(null)
-    const [search, setSearch] = useState('finding nemo')
-    const [value, setValue] = useState('')
-    const fetchMovies = () =>{
+    const [search, setSearch] = useState('')
+
+    const fetchMovies = (search) => {
+
         fetch(`http://www.omdbapi.com/?s=${search}&type=movie&apikey=${process.env.REACT_APP_MY_KEY}`)
         .then(res => res.json())
         .then(json => {
@@ -14,23 +15,26 @@ const MovieList = () => {
                 console.log(json.Response)
             } else {
                 setMovies(json.Search)
+                setSearch('')
             }
         })
     }
 
     useEffect(() => {
-        fetchMovies()
+        fetchMovies(search)
     }, [])
 
     return (
         <div>
-            <SearchBar
-                value={value}
-                onChange={(newValue) => setValue(newValue)}
-                // onRequestSearch={() => doSomethingWith(this.state.value)}
-            />
-            {console.log(movies)}
-            {movies !== null ? movies.map(movie => <MovieCard movie={movie} />) : <h1>null</h1>}
+            <div className="searchbar">
+                <SearchBar
+                    autofocus
+                    value={search}
+                    onChange={(newValue) => setSearch(newValue)}
+                    onRequestSearch={() => {fetchMovies(search)}}
+                />
+            </div>
+            {movies !== null ? movies.map(movie => <MovieCard movie={movie} />) : <h1>Type in the search bar and nominate your favorite movies!</h1>}
         </div>
     )
 }

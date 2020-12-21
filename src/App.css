@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: 'Limelight';
+  src: local('Limelight'), url(./Fonts/Limelight.ttf) format('truetype');
+}
+
+.title {
+  font-family: 'Limelight';
+}
+
 .ui.search{
   padding: 20px;
+}
+
+.searchbar{
+  margin-left: 30%;
+  margin-right: 30%;
 }
