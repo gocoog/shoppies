@@ -42,7 +42,7 @@ const MovieList = () => {
                 setShowResults(true)
             }
         } else {
-            alert("cant nominate more movies")
+            alert("Cannot nominate more than 5 movies")
         }
     }
 

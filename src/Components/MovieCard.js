@@ -67,12 +67,7 @@ const MovieCard = (props) => {
                         <button
                         className="nominate-button"
                         onClick={(e) => {
-                            if(props.moviesPicked >= 5){
-                                alert("cannot nominate anymore")
-                            } else {
-                                // setNominated(true)
                                 props.nominateMovie(e, movie)
-                            }
                         }}
                         >
                         Nominate
