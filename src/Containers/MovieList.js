@@ -25,11 +25,15 @@ const MovieList = () => {
 
     useEffect(() => {
         fetchMovies(search)
-        if(nominatedMovies.length > 0){
-            console.log(nominatedMovies)
-            setShowResults(true)
-        }
     }, [movies])
+
+    useEffect(() => {
+        if(nominatedMovies.length > 0){
+            setShowResults(true)
+        } else if (nominatedMovies.length === 0){
+            setShowResults(false)
+        }
+    }, [nominatedMovies])
     
     const nominateMovie = (e, movie) => {
         if (nominatedMovies.length < 5){
@@ -43,9 +47,6 @@ const MovieList = () => {
     }
 
     const removeNomination = (e, movie) => {
-        // const index = nominatedMovies.indexOf(movie.imdbID)
-        // console.log(index)
-        // nominatedMovies.splice(index, 1)
         let array = nominatedMovies.filter(n => n.imdbID !== movie.imdbID)
         setNominatedMovies(array)
     }

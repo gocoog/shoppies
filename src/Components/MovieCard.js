@@ -22,12 +22,12 @@ const MovieCard = (props) => {
     const [nominated, setNominated] = useState(false)
 
     const checkNomination = () => {
+        setNominated(false)
         for(const i of props.moviesPicked){
             if (movie.imdbID === i.imdbID){
                 setNominated(true)
             }
         }
-        
     }
 
     const renderMoviePoster = () => {
@@ -38,9 +38,12 @@ const MovieCard = (props) => {
         }
     }
     useEffect(() => {
-        checkNomination()
         renderMoviePoster()
-    }, [props.moviesPicked, movie])
+    }, [movie])
+
+    useEffect(() => {
+        checkNomination()
+    }, [props.moviesPicked])
 
     return (
         <div className="flex-card" >
